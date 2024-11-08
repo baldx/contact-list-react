@@ -17,7 +17,7 @@ function Field({label, inputType}) {
 
     return (
         <>
-            <label htmlFor={label}>
+            <label htmlFor={removeSpace(label)}>
                 {capitalizeLetter(label) + ":"}
                 <input type={inputType} name={removeSpace(label)} id={removeSpace(label)} />
             </label>
