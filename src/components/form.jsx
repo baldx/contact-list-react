@@ -13,13 +13,13 @@ function Form({addContact}) {
 
         addContact(newContact); //update contact state
 
-        e.target.reset();
+        e.target.reset(); //resets the form
     }
 
     return (
         <>
             <form onSubmit={handleSubmit}>
-            <Field label="First name" inputType="text" value=""/>
+            <Field label="First name" inputType="text" value=""/> {/*create input fields in form */}
             <Field label="Last name" inputType="text" value=""/>
             <Field label="Birth date" inputType="date" value=""/>
             <button type="submit">Submit</button>
