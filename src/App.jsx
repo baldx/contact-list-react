@@ -12,13 +12,22 @@ function App() {
   function addContact(newContact) { //appends new contacts to contacts array
     setContacts(prevContact => [...prevContact, newContact]); //use spread operator to add previous contacts + new ones
   };
-
   
+  function reLoadContacts() {
+    setContacts(prevContact => [...prevContact]);
+  }
+
+  function removeContact(e) {
+    contacts.splice(contacts.indexOf(e), 1);
+    reLoadContacts();
+    console.log(contacts);
+    
+  }
 
   return (
     <>
       <Form addContact={addContact}/>
-      <Contacts contacts={contacts}/>
+      <Contacts contacts={contacts} removeContact={removeContact}/>
     </>
   )
 }
