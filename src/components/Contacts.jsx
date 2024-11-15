@@ -1,4 +1,4 @@
-function Contacts({contacts}) {
+function Contacts({contacts, removeContact}) {
 
     const calculateAge = (birthdate) => {
         const today = new Date(); //get todays date
@@ -31,7 +31,6 @@ function Contacts({contacts}) {
         return daysLeft;
     }
 
-
     return (
         <>
             <ul>
@@ -42,6 +41,7 @@ function Contacts({contacts}) {
                         <div className="birthDate" key={contact.birthDate + index}>Birthday: {contact.birthDate}</div>
                         <div className="age" key={"daysLeft" + index}>{"Age: " + calculateAge(contact.birthDate)}</div>
                         <div className="daysLeft" key={calulcateDaysTillBirthday(contact.birthDate) + index}>{"Days left: " + calulcateDaysTillBirthday(contact.birthDate)}</div>
+                        <button className="removeContact" onClick={removeContact}>Remove contact</button>
                     </li>
                 })}
             </ul>
