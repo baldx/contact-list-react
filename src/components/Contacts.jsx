@@ -41,7 +41,7 @@ function Contacts({contacts, removeContact}) {
                         <div className="birthDate" key={contact.birthDate + index}>Birthday: {contact.birthDate}</div>
                         <div className="age" key={"daysLeft" + index}>{"Age: " + calculateAge(contact.birthDate)}</div>
                         <div className="daysLeft" key={calulcateDaysTillBirthday(contact.birthDate) + index}>{"Days left: " + calulcateDaysTillBirthday(contact.birthDate)}</div>
-                        <button className="removeContact" onClick={removeContact}>Remove contact</button>
+                        <button className="removeContact" onClick={() => removeContact(contact)}>Remove contact</button>
                     </li>
                 })}
             </ul>
