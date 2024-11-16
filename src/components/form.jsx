@@ -1,6 +1,14 @@
+import { useState } from "react";
 import Field from "./Fields";
 
-function Form({addContact}) {
+
+function Form({addContact, calculateAge, calculateDaysTillBirthday}) {
+    const [creationOrder, setCreationOrder] = useState(1);
+
+    function increaseCreationID() {
+        setCreationOrder(e => e + 1);
+        return creationOrder + 1; //avoids async func
+      }  
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -9,7 +17,9 @@ function Form({addContact}) {
         const lastName = e.target.elements.LastName.value;
         const birthDate = e.target.elements.BirthDate.value;
 
-        const newContact = { firstName, lastName, birthDate }; //add them to a new contact
+        const newContact = { firstName, lastName, birthDate, creation: increaseCreationID(), age: calculateAge(birthDate), daysLeft: calculateDaysTillBirthday(birthDate)}; //add them to a new contact
+        console.log(newContact);
+        
 
         addContact(newContact); //update contact state
 
