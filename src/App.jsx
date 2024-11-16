@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Form from './components/form'
 import Contacts from './components/Contacts';
+import Sorting from './Sorting';
 
 function App() {
   const [contacts, setContacts] = useState([ //default state
@@ -13,20 +14,19 @@ function App() {
     setContacts(prevContact => [...prevContact, newContact]); //use spread operator to add previous contacts + new ones
   };
   
-  function reLoadContacts() {
-    setContacts(prevContact => [...prevContact]);
+  function reloadContacts(newContacts) {
+    setContacts([...newContacts]);
   }
 
-  function removeContact(e) {
-    contacts.splice(contacts.indexOf(e), 1);
-    reLoadContacts();
-    console.log(contacts);
-    
+  function removeContact(contact) {
+    const updatedContacts = contacts.filter((item) => item !== contact);
+    reloadContacts(updatedContacts);
   }
 
   return (
     <>
       <Form addContact={addContact}/>
+      <Sorting contacts={contacts} reloadContacts={reloadContacts}/>
       <Contacts contacts={contacts} removeContact={removeContact}/>
     </>
   )
