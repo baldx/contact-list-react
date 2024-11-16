@@ -5,22 +5,42 @@ const [sortingStatus, setSortingStatus] = useState('Creation');
 
 const sort = () => {
     if (sortingStatus === 'Creation') {
-        const sortedContacts = [...contacts].sort((name1, name2) => {
-            return name1.firstName.localeCompare(name2.firstName)
+        const sortedContacts = [...contacts].sort((contact1, contact2) => {
+            return contact1.firstName.localeCompare(contact2.firstName) //compares the strings and returns 1 or -1 depending on order or 0 if same
         }); //sorts list to ascending name order
         reloadContacts(sortedContacts);
-        setSortingStatus('Name')
+        setSortingStatus('Name');
     }
     if (sortingStatus === 'Name') {
-        const sortedContacts = [...contacts].sort((age1, age2) => {
-            if (age1 > age2 || age1 === age2) return 1;
-            else if (age2 < age1) return -1;
-            else return 0;
-        }); //sorts lists age
+        const sortedContacts = [...contacts].sort((contact1, contact2) => {
+            const age1 = contact1.age; // adjust this to match the age property in contact object
+            const age2 = contact2.age;
+            
+            // sorting in ascending order
+            if (age1 > age2) return 1;
+            if (age1 < age2) return -1;
+            return 0;
+        });
         reloadContacts(sortedContacts);
+        setSortingStatus('Age')
     }
     if (sortingStatus === 'Age') {
-        
+        const sortedContacts = [...contacts].sort((contact1, contact2) => {
+            if (contact1.daysLeft > contact2.daysLeft) return 1;
+            if (contact1.daysLeft < contact2.daysLeft) return -1;
+            return 0;
+        });
+        reloadContacts(sortedContacts);
+        setSortingStatus('Days left until birthday');
+    }
+    if (sortingStatus === 'Days left until birthday') {
+        const sortedContacts = [...contacts].sort((contact1, contact2) => {
+            if (contact1.creation > contact2.creation) return 1;
+            if (contact1.creation < contact2.creation) return -1;
+            return 0;
+        });
+        reloadContacts(sortedContacts);
+        setSortingStatus('Creation');
     }
 
 }
