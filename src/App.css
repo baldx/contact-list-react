@@ -3,3 +3,15 @@
     margin: 0.3em;
 }
 
+.sorting {
+    margin: 0.3em;
+    padding: 0.5em;
+    font-size: 1.2em
+}
+
+.removeContact {
+    width: 80%;
+    align-self: center;
+    padding: 0.3em;
+    margin: 0.3em;
+}
