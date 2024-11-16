@@ -11,7 +11,7 @@ function Field({label, inputType}) {
 
     function camelCasing(string) { //camelCasing for attributes
         return string.split(' ')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))//splits the string then goes to first element of array and makes it to uppercase, after takes the rest of the word and combines it together later
         .join('');
     }
 

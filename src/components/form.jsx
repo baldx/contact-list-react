@@ -18,8 +18,6 @@ function Form({addContact, calculateAge, calculateDaysTillBirthday}) {
         const birthDate = e.target.elements.BirthDate.value;
 
         const newContact = { firstName, lastName, birthDate, creation: increaseCreationID(), age: calculateAge(birthDate), daysLeft: calculateDaysTillBirthday(birthDate)}; //add them to a new contact
-        console.log(newContact);
-        
 
         addContact(newContact); //update contact state
 

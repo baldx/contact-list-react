@@ -25,8 +25,8 @@ const sort = () => {
         setSortingStatus('Age')
     }
     if (sortingStatus === 'Age') {
-        const sortedContacts = [...contacts].sort((contact1, contact2) => {
-            if (contact1.daysLeft > contact2.daysLeft) return 1;
+        const sortedContacts = [...contacts].sort((contact1, contact2) => {//iterates through contacts, compares first contact and second contact with each other, then 2nd contact with 3rd, etc
+            if (contact1.daysLeft > contact2.daysLeft) return 1; //logic for comparing days left ascending order
             if (contact1.daysLeft < contact2.daysLeft) return -1;
             return 0;
         });
@@ -35,7 +35,7 @@ const sort = () => {
     }
     if (sortingStatus === 'Days left until birthday') {
         const sortedContacts = [...contacts].sort((contact1, contact2) => {
-            if (contact1.creation > contact2.creation) return 1;
+            if (contact1.creation > contact2.creation) return 1; //logic to check for creation order ascending order
             if (contact1.creation < contact2.creation) return -1;
             return 0;
         });

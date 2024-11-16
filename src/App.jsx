@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Form from './components/form'
 import Contacts from './components/Contacts';
-import Sorting from './Sorting';
+import Sorting from './components/Sorting';
 
 function App() {
 
@@ -37,7 +37,7 @@ function calculateDaysTillBirthday(birthdate) {
     return daysLeft;
 }
   const [contacts, setContacts] = useState([ //default state
-    {firstName: "John", lastName: "Doe", birthDate: "2001-04-16", creation: 0, age: calculateAge("2001-04-16"), daysLeft: calculateDaysTillBirthday("2001-04-16")},
+    {firstName: "John", lastName: "Doe", birthDate: "2001-04-16", creation: 0, age: calculateAge("2001-04-16"), daysLeft: calculateDaysTillBirthday("2001-04-16")},//example data
     {firstName: "Boe", lastName: "Jiden", birthDate: "2006-03-21", creation: 1, age: calculateAge("2006-03-21"), daysLeft: calculateDaysTillBirthday("2006-03-21")}
   ]);
 
@@ -47,12 +47,12 @@ function calculateDaysTillBirthday(birthdate) {
   };
   
   function reloadContacts(newContacts) {
-    setContacts([...newContacts]);
+    setContacts([...newContacts]); //spread operator to iterate through the array and update contacts state
   }
 
-  function removeContact(contact) {
-    const updatedContacts = contacts.filter((item) => item !== contact);
-    reloadContacts(updatedContacts);
+  function removeContact(contact) {//removes contact
+    const updatedContacts = contacts.filter((item) => item !== contact);//checks if item isnt the same as item then removes
+    reloadContacts(updatedContacts);//reload contact to display updated data
   }
 
   return (
